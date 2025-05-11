@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Explore India</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      justify-content: center;
+      padding: 50px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 500px;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    label {
+      margin-top: 10px;
+      display: block;
+    }
+    select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    #places {
+      margin-top: 20px;
+    }
+    .place {
+      margin-bottom: 20px;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    .place img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Explore Kerala</h1>
+
+    <label for="age">Select Age Group:</label>
+    <select id="age">
+      <option value="kids">Kids</option>
+      <option value="youth">Youth</option>
+      <option value="adults">Adults</option>
+      <option value="seniors">Seniors</option>
+    </select>
+
+    <button onclick="getPlaces()">Show Top Places</button>
+
+    <div id="places"></div>
+  </div>
+
+  <script>
+    const data = {
+      kids: [
+        { name: "Wonderla Kochi", description: "Amusement park with rides and water slides.", img: "https://tinyurl.com/2p8fmw3r" },
+        { name: "Kumarakom Bird Sanctuary", description: "Fun nature experience for kids.", img: "https://tinyurl.com/yc5jb2wm" },
+        { name: "Marine Drive", description: "Scenic walkway with food and fun.", img: "https://tinyurl.com/yc6vt9jp" }
+      ],
+      youth: [
+        { name: "Munnar", description: "Hills, tea estates, and adventure.", img: "https://tinyurl.com/44ar9zey" },
+        { name: "Varkala Beach", description: "Cliff-side beach perfect for youth.", img: "https://tinyurl.com/yw8y89fb" },
+        { name: "Wayanad", description: "Trekking and waterfalls.", img: "https://tinyurl.com/mw97hxfx" }
+      ],
+      adults: [
+        { name: "Alleppey", description: "Romantic backwater houseboats.", img: "https://tinyurl.com/2zztzwpn" },
+        { name: "Thekkady", description: "Wildlife sanctuary and spice gardens.", img: "https://tinyurl.com/45vrsry5" },
+        { name: "Fort Kochi", description: "Colonial streets and heritage sites.", img: "https://tinyurl.com/3yy3sdyj" }
+      ],
+      seniors: [
+        { name: "Guruvayur Temple", description: "Famous pilgrimage site.", img: "https://tinyurl.com/38znp6fj" },
+        { name: "Trivandrum Zoo", description: "Easy walking and relaxing surroundings.", img: "https://tinyurl.com/3vhcmh9n" },
+        { name: "Kollam", description: "Calm beach town.", img: "https://tinyurl.com/2n6hvz2x" }
+      ]
+    };
+
+    function getPlaces() {
+      const age = document.getElementById("age").value;
+      const places = data[age];
+      const container = document.getElementById("places");
+      container.innerHTML = "";
+
+      places.forEach(p => {
+        const div = document.createElement("div");
+        div.className = "place";
+        div.innerHTML = `<h3>${p.name}</h3><p>${p.description}</p><img src="${p.img}" alt="${p.name}" />`;
+        container.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>
